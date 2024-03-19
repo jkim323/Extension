@@ -29,13 +29,45 @@ const toggleNoteTakingArea = (show) => {
         z-index: 1000;
       `;
       const textArea = document.createElement('textarea');
-      textArea.style.cssText = 'width: 100%; height: 100%;';
+      textArea.id = 'noteTextArea';
+      textArea.style.cssText = 'width: 100%; height: 90%;';
       noteContainer.appendChild(textArea);
+      document.body.appendChild(noteContainer);
+
+      // Create the Save button
+      const saveButton = document.createElement('button');
+      saveButton.textContent = 'Save Notes';
+      saveButton.style.cssText = 'width: 100%; margin-top: 10px;';
+      saveButton.onclick = saveNotes;
+
+      noteContainer.appendChild(textArea);
+      noteContainer.appendChild(saveButton);
       document.body.appendChild(noteContainer);
     }
   } else if (existingContainer) {
     existingContainer.remove();
   }
+};
+
+// Function to save notes
+const saveNotes = () => {
+  const textArea = document.getElementById('noteTextArea');
+  const text = textArea.value;
+
+  // Create a Blob with the text
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+
+  // Create a link and set the URL as the href
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'YouTubeNotes.txt'; // Default file name, change as needed
+  document.body.appendChild(a);
+  a.click();
+
+  // Clean up
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 };
 
 const checkForVideoPlayerAndPage = () => {
@@ -56,3 +88,4 @@ window.addEventListener('replaceState', checkForVideoPlayerAndPage);
 
 // Initial check
 checkForVideoPlayerAndPage();
+
