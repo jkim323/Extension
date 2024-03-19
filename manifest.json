@@ -3,7 +3,10 @@
   "name": "Hide YouTube Recommendations",
   "version": "1.0",
   "description": "Hides recommended videos on YouTube.",
-  "permissions": ["activeTab"],
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
@@ -18,7 +21,8 @@
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/*"],
-      "js": ["content.js"]
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ],
   "icons": {
