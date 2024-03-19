@@ -25,6 +25,10 @@ This will run in the background and can listen for events, like the extension be
 
 This script will run in the context of the web page and can be used to hide the recommended videos, create the note taking area in replacement, and create widgets as necessary. The script lives in this script which uses a combination of URL path checking and DOM observation to display the note-taking area only when a video is being viewed. This involves detecting changes in the page's URL and the presence of video player elements to determine the appropriate times to show or hide the note-taking interface. A MutationObserver is employed to monitor for changes in the page, accommodating YouTube's dynamic content loading, and ensuring the note-taking area's visibility is updated appropriately during site navigation.
 
+## script.js
+
+This file allows the user to interact with the extension's popup UI to trigger functionality within the extension. Specifically, clicking the hideBtn button in the popup sends a command to the extension's background script to hide recommended videos on YouTube.
+
 ## popup.html
 
 This is the HTML document that forms the structure of your extension's popup window. The popup is what users interact with when they click on the extension icon in the Chrome toolbar. 
