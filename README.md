@@ -1,7 +1,7 @@
 # Overview
 
 Remove recommended videos while watching Youtube Videos.
-Allows users to also take notes while wathcing a youtube video.
+Allows users to also take notes while wathcing a youtube video providing a more focused and productive environment and providing tools for note-taking and customization without leaving the video page.
 
 ## manifest.json
 
