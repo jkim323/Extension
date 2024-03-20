@@ -54,20 +54,24 @@ const saveNotes = () => {
   const textArea = document.getElementById('noteTextArea');
   const text = textArea.value;
 
-  // Create a Blob with the text
-  const blob = new Blob([text], { type: 'text/plain' });
-  const url = URL.createObjectURL(blob);
+  // Prompt the user for a filename
+  const fileName = prompt("Save as:", "MyYouTubeNotes.txt");
+  if (fileName) { // Proceed only if the user didn't cancel the prompt
+    // Create a Blob with the text
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
 
-  // Create a link and set the URL as the href
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'YouTubeNotes.txt'; // Default file name, change as needed
-  document.body.appendChild(a);
-  a.click();
+    // Create a link and set the URL as the href
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName; // Use the user-provided filename
+    document.body.appendChild(a);
+    a.click();
 
-  // Clean up
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+    // Clean up
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
 };
 
 const checkForVideoPlayerAndPage = () => {
@@ -88,4 +92,5 @@ window.addEventListener('replaceState', checkForVideoPlayerAndPage);
 
 // Initial check
 checkForVideoPlayerAndPage();
+
 
