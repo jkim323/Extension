@@ -10,6 +10,29 @@ const hideRecommendations = () => {
   });
 };
 
+let isNotesVisible = true; // Assume notes are visible by defaultå
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.action === "toggleRecommendationsAndNotes") {
+      isNotesVisible = !isNotesVisible; // Toggle the visibility state
+      toggleNotesAndRecommendations(isNotesVisible);
+    }
+  }
+);
+
+function toggleNotesAndRecommendations(visible) {
+  // Logic to show/hide recommendations - adjust according to your implementation
+  document.querySelectorAll('ytd-watch-next-secondary-results-renderer, ytd-compact-video-renderer, ytd-compact-autoplay-renderer')
+    .forEach(el => el.style.display = visible ? 'none' : 'block'); // Adjust display logic as needed
+
+  // Show/hide note-taking area
+  const noteContainer = document.getElementById('customNoteContainer');
+  if (noteContainer) {
+    noteContainer.style.display = visible ? 'block' : 'none';
+  }
+}
+
 const toggleNoteTakingArea = (show) => {
   const existingContainer = document.getElementById('customNoteContainer');
   if (show) {
