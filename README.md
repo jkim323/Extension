@@ -1,7 +1,7 @@
 # Overview
 
-Remove recommended videos while watching Youtube Videos.
-Allows users to also take notes while wathcing a youtube video providing a more focused and productive environment and providing tools for note-taking and customization without leaving the video page.
+Removes recommended videos while watching Youtube Videos.
+Allows users to also take notes while watching a youtube video. This tool provides a more focused and a productive environment while alllowing note-taking without leaving the video page.
 
 # Functionality
 
@@ -36,7 +36,3 @@ This is the HTML document that forms the structure of your extension's popup win
 ## popup.css
 
 This CSS file is used to style the popup window defined in popup.html. It controls the appearance of the popup, including layout, colors, fonts, and other visual elements. 
-
-## Future Work
-
-Will Work On Dynamic Layout
